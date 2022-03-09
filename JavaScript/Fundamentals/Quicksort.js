@@ -2,11 +2,14 @@
 
 function quickSort(arr, lowerBound, upperBound){
     let index = partition(arr, lowerBound, upperBound);
+    console.log(arr);
     if(lowerBound < index - 1){
         quickSort(arr, lowerBound, index - 1);
+        console.log(arr);
     }
     if(index < right){
         quickSort(arr, index, upperBound);
+        console.log(arr);
     }
     return arr;
 }
