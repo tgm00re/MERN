@@ -38,5 +38,6 @@ function partition(arr, lowerBound, upperBound){
 }
 
 arr = [5,8,1,6,4,9,12,-5];
+console.log(partition([5,4,9,2,5,3]))
 sortedArr = quickSort(arr, 0, arr.length - 1);
 console.log(sortedArr);
