@@ -13,6 +13,7 @@ app.use(express.urlencoded({extended: true}));
 
 const port = 8000;
 
+//This must be before the app.use statements!
 require('./server/routes/person.routes')(app);
 
 
