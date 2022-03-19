@@ -12,6 +12,18 @@ module.exports.getSingleProduct = (req, res) => {
     .catch(err => res.json({message: "There was an error!", error: err}))
 }
 
+module.exports.updateProduct = (req, res) => {
+    Product.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}) //{new: true} makes it so we get back the updated product.
+        .then(updatedProduct => res.json(updatedProduct))
+        .catch(err => res.json({message: "There was an error", error: err}))
+}
+
+module.exports.deleteProduct = (req, res) => {
+    Product.deleteOne({_id: req.params.id})
+        .then(response => res.json(response))//Response is an object aknowledging that deletion was successful.
+        .catch(err => res.json({message: "There was an error!", error: err}))
+}
+
 module.exports.createProduct = (req, res) => {
     console.log(req.body);
     const {title, price, description} = req.body;

@@ -4,6 +4,7 @@ import {Switch, Route, Link} from 'react-router-dom'
 import ProductForm from '../components/ProductForm'
 import ProductList from '../components/ProductList';
 import Product from '../components/Product';
+import UpdateProductForm from '../components/UpdateProductForm';
 
 export default function Main() {
     
@@ -19,6 +20,9 @@ export default function Main() {
             </Route>
             <Route exact path="/products/:id">
                 <Product/>
+            </Route>
+            <Route exact path="/products/update/:id">
+                <UpdateProductForm/>
             </Route>
             </Switch>
         </div>
