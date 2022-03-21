@@ -17,6 +17,8 @@ export default function ProductList() {
             return () => {isMounted = false};
         })
 
+        
+
     return (
         <>
             <h1>All Products</h1>

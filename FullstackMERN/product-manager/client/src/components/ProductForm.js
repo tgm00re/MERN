@@ -1,27 +1,25 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 
-export default function ProductForm(props) {
-    const [title, setTitle] = useState("");
-    const [price, setPrice] = useState(0);
-    const [description, setDescription] = useState("");
 
+export default function ProductForm(props) {
+    const [title, setTitle] = useState(props.initialTitle);
+    const [price, setPrice] = useState(props.initialPrice);
+    const [description, setDescription] = useState(props.initialDescription);
 
     function handleSubmit(e){
         e.preventDefault();
-        axios.post("http://localhost:8000/api/products/create", {title: title, price: price, description: description})
-            .then(res => {console.log("Responsee: ", res)})
-            .catch(err => console.log("There was an error: ", err))
-
+        props.submitFunction({title: title, price: price, description: description});
         setTitle("");
         setPrice(0);
-        setDescription(0);
+        setDescription("");
     }
+
 
 
     return (
         <div>
-            <h1>Create a product!</h1>
+            <h1>{props.message}</h1>
             <form onSubmit={handleSubmit}>
                 <p>
                     <label>Title</label>
