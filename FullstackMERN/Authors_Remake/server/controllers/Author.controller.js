@@ -6,20 +6,27 @@ module.exports.getAllAuthors = (req, res) => {
         .catch(err => res.json({message: "Something went wrong!", error: err}))
 }
 
+module.exports.getAuthorById = (req, res) => {
+    Author.findOne({_id: req.params._id})
+        .then(author => res.json(author))
+        .catch(err => res.json({message: "Something went wrong!", error: err}))
+}
+
 module.exports.createAuthor = (req, res) => {
     const { name } = req.body;
     Author.create({
         name: name
     })
     .then(author => res.json(author))
-    .catch(err => res.json({message: "Something went wrong!", error: err}))
+    .catch(err => res.status(400).json(err))
 }
 
 module.exports.updateAuthor = (req, res) => {
-    const { name, _id } = req.body;
-    Author.updateOne({_id: _id}, {name: name})
+    const { name } = req.body;
+    console.log(req.body);
+    Author.updateOne({_id: req.params._id}, {name: name}, {runValidators: true})
         .then(author => res.json(author))
-        .catch(err => res.json({message: "Something went wrong!", err}))
+        .catch(err => res.status(400).json(err))
 }
 
 module.exports.deleteAuthor = (req, res) => {
