@@ -21,6 +21,7 @@ export default function PlayerList() {
         axios.delete(`http://localhost:8000/api/players/delete/${_id}`)
             .then(response => console.log(response))
             .then(err => console.log("Error: ", err))
+        alert("Player was succesfully deleted.");
     }
 
 
